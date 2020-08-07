@@ -4,23 +4,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Global</title>
+	<title>DocStrap Global</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.cyborg.css">
 
 </head>
 
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top ">
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Documentation</a>
+		<a class="navbar-brand" href="index.html">DocStrap</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -151,7 +151,7 @@
 <dd>
     
     <div class="description">
-        Placeholder argument for curried functions.
+        <p>Placeholder argument for curried functions.</p>
     </div>
     
 
@@ -187,6 +187,16 @@
 
 
 
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_placeholderArgument.js.html">function/placeholderArgument.js</a>,
+				 <a href="function_placeholderArgument.js.html#sunlight-1-line-6">line 6</a>
+			</li>
+		</ul>
+	</dd>
 	
 
 	
@@ -225,7 +235,7 @@
 
     
     <div class="description">
-        Creates a nullary function that always returns the original argument.
+        <p>Creates a nullary function that always returns the original argument.</p>
     </div>
     
 
@@ -317,6 +327,16 @@
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_always.js.html">function/always.js</a>,
+				 <a href="function_always.js.html#sunlight-1-line-7">line 7</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -373,9 +393,9 @@
 
     
     <div class="description">
-        Applies a list of functions to a list of values.
-If functions are provided for both arguments, returns a function that's equivalent to f(x, g(x)).
-Defers to the `ap` method of `applyF`, if present.
+        <p>Applies a list of functions to a list of values.<br>
+If functions are provided for both arguments, returns a function that's equivalent to f(x, g(x)).<br>
+Defers to the <code>ap</code> method of <code>applyF</code>, if present.</p>
     </div>
     
 
@@ -500,6 +520,16 @@ Defers to the `ap` method of `applyF`, if present.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_ap.js.html">function/ap.js</a>,
+				 <a href="function_ap.js.html#sunlight-1-line-15">line 15</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -556,8 +586,8 @@ Defers to the `ap` method of `applyF`, if present.
 
     
     <div class="description">
-        Applies a list of arguments to a function.
-The `this` variable will be set to undefined for that function execution.
+        <p>Applies a list of arguments to a function.<br>
+The <code>this</code> variable will be set to undefined for that function execution.</p>
     </div>
     
 
@@ -673,6 +703,16 @@ The `this` variable will be set to undefined for that function execution.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_apply.js.html">function/apply.js</a>,
+				 <a href="function_apply.js.html#sunlight-1-line-11">line 11</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -729,11 +769,11 @@ The `this` variable will be set to undefined for that function execution.
 
     
     <div class="description">
-        Takes a variable list of functions and returns a new function
-that is a composition of all the functions that were passed.
-The functions are called right-to-left.
-The right-most function may have any arity, while the rest must be unary.
-An example with three functions (f, g, h) => (...args) => h(g(f(...args)))
+        <p>Takes a variable list of functions and returns a new function<br>
+that is a composition of all the functions that were passed.<br>
+The functions are called right-to-left.<br>
+The right-most function may have any arity, while the rest must be unary.<br>
+An example with three functions (f, g, h) =&gt; (...args) =&gt; h(g(f(...args)))</p>
     </div>
     
 
@@ -837,6 +877,16 @@ An example with three functions (f, g, h) => (...args) => h(g(f(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_compose.js.html">function/compose.js</a>,
+				 <a href="function_compose.js.html#sunlight-1-line-15">line 15</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -893,10 +943,10 @@ An example with three functions (f, g, h) => (...args) => h(g(f(...args)))
 
     
     <div class="description">
-        Takes a list of functions and a converging function.
-Returns a new function that takes a variable number of arguments,
-which will be applied to each of the branching functions.
-The results of the branching functions will be passed to the converging function.
+        <p>Takes a list of functions and a converging function.<br>
+Returns a new function that takes a variable number of arguments,<br>
+which will be applied to each of the branching functions.<br>
+The results of the branching functions will be passed to the converging function.</p>
     </div>
     
 
@@ -1012,6 +1062,16 @@ The results of the branching functions will be passed to the converging function
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_converge.js.html">function/converge.js</a>,
+				 <a href="function_converge.js.html#sunlight-1-line-14">line 14</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -1068,20 +1128,17 @@ The results of the branching functions will be passed to the converging function
 
     
     <div class="description">
-        Curries the provided function.
-A curried function does not need to have all of its provided at once.
-If `f` is a ternary and g = curry(f), then the following is equivalent:
-
+        <p>Curries the provided function.<br>
+A curried function does not need to have all of its provided at once.<br>
+If <code>f</code> is a ternary and g = curry(f), then the following is equivalent:</p>
 <pre>
 g(1)(2)(3);
 g(1)(2, 3);
 g(1, 2)(3);
 g(1, 2, 3);
 </pre>
-
-Additionaly, the F.__ symbol can be used as a placeholder argument,
-when you want to partially apply arguments with gaps inbetween them.
-
+<p>Additionaly, the F.__ symbol can be used as a placeholder argument,<br>
+when you want to partially apply arguments with gaps inbetween them.</p>
 <pre>
 g(1, __, 3)(2);
 g(__, __, 3)(1, 2);
@@ -1178,6 +1235,16 @@ g(__, __, 3)(__, 2)(1);
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_curry.js.html">function/curry.js</a>,
+				 <a href="function_curry.js.html#sunlight-1-line-60">line 60</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -1234,8 +1301,8 @@ g(__, __, 3)(__, 2)(1);
 
     
     <div class="description">
-        Creates a new function that takes its arguments
-in reverse order of the original function.
+        <p>Creates a new function that takes its arguments<br>
+in reverse order of the original function.</p>
     </div>
     
 
@@ -1327,6 +1394,16 @@ in reverse order of the original function.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_flip.js.html">function/flip.js</a>,
+				 <a href="function_flip.js.html#sunlight-1-line-9">line 9</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -1363,7 +1440,7 @@ in reverse order of the original function.
 
     
     <div class="description">
-        The identity function just returns its first argument.
+        <p>The identity function just returns its first argument.</p>
     </div>
     
 
@@ -1455,6 +1532,16 @@ in reverse order of the original function.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_identity.js.html">function/identity.js</a>,
+				 <a href="function_identity.js.html#sunlight-1-line-9">line 9</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -1511,7 +1598,7 @@ in reverse order of the original function.
 
     
     <div class="description">
-        Finds the index of the first match, or -1 if there's no match.
+        <p>Finds the index of the first match, or -1 if there's no match.</p>
     </div>
     
 
@@ -1651,6 +1738,16 @@ in reverse order of the original function.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_indexOf.js.html">string/indexOf.js</a>,
+				 <a href="string_indexOf.js.html#sunlight-1-line-11">line 11</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -1707,7 +1804,7 @@ in reverse order of the original function.
 
     
     <div class="description">
-        Matches the regular expression with the string and returns the match results.
+        <p>Matches the regular expression with the string and returns the match results.</p>
     </div>
     
 
@@ -1823,6 +1920,16 @@ in reverse order of the original function.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_match.js.html">string/match.js</a>,
+				 <a href="string_match.js.html#sunlight-1-line-10">line 10</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -1882,8 +1989,8 @@ in reverse order of the original function.
 
     
     <div class="description">
-        Memoizes a function where the key generator function
-decides which cached result should be returned.
+        <p>Memoizes a function where the key generator function<br>
+decides which cached result should be returned.</p>
     </div>
     
 
@@ -1999,6 +2106,16 @@ decides which cached result should be returned.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_memoizeWith.js.html">function/memoizeWith.js</a>,
+				 <a href="function_memoizeWith.js.html#sunlight-1-line-10">line 10</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -2035,11 +2152,11 @@ decides which cached result should be returned.
 
     
     <div class="description">
-        Takes an index and returns a function
-that will return the argument with that index.
-If the index is negative, then the argument will
-be returned from the end of the argument list,
-where -1 is the last argument.
+        <p>Takes an index and returns a function<br>
+that will return the argument with that index.<br>
+If the index is negative, then the argument will<br>
+be returned from the end of the argument list,<br>
+where -1 is the last argument.</p>
     </div>
     
 
@@ -2131,6 +2248,16 @@ where -1 is the last argument.
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_nthArg.js.html">function/nthArg.js</a>,
+				 <a href="function_nthArg.js.html#sunlight-1-line-13">line 13</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -2187,11 +2314,11 @@ where -1 is the last argument.
 
     
     <div class="description">
-        Takes a variable list of functions and returns a new function
-that is a composition of all the functions that were passed.
-The functions are called left-to-right.
-The left-most function may have any arity, while the rest must be unary.
-An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
+        <p>Takes a variable list of functions and returns a new function<br>
+that is a composition of all the functions that were passed.<br>
+The functions are called left-to-right.<br>
+The left-most function may have any arity, while the rest must be unary.<br>
+An example with three functions (f, g, h) =&gt; (...args) =&gt; f(g(h(...args)))</p>
     </div>
     
 
@@ -2295,6 +2422,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_pipe.js.html">function/pipe.js</a>,
+				 <a href="function_pipe.js.html#sunlight-1-line-11">line 11</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -2351,7 +2488,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Tests a string vs a regular expression.
+        <p>Tests a string vs a regular expression.</p>
     </div>
     
 
@@ -2467,6 +2604,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_regexTest.js.html">string/regexTest.js</a>,
+				 <a href="string_regexTest.js.html#sunlight-1-line-10">line 10</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -2523,7 +2670,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Replaces
+        <p>Replaces</p>
     </div>
     
 
@@ -2669,6 +2816,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_replace.js.html">string/replace.js</a>,
+				 <a href="string_replace.js.html#sunlight-1-line-11">line 11</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -2725,7 +2882,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Splits a string into a list of strings based on a delimiter.
+        <p>Splits a string into a list of strings based on a delimiter.</p>
     </div>
     
 
@@ -2841,6 +2998,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_split.js.html">string/split.js</a>,
+				 <a href="string_split.js.html#sunlight-1-line-10">line 10</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -2897,7 +3064,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Runs a function on an argument and returns the argument.
+        <p>Runs a function on an argument and returns the argument.</p>
     </div>
     
 
@@ -3013,6 +3180,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_tap.js.html">function/tap.js</a>,
+				 <a href="function_tap.js.html#sunlight-1-line-10">line 10</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -3069,7 +3246,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Returns a new function that delays execution by returning a nullary function.
+        <p>Returns a new function that delays execution by returning a nullary function.</p>
     </div>
     
 
@@ -3160,6 +3337,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_thunkify.js.html">function/thunkify.js</a>,
+				 <a href="function_thunkify.js.html#sunlight-1-line-9">line 9</a>
+			</li>
+		</ul>
+	</dd>
 	
 
 	
@@ -3217,7 +3404,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Converts a string to lower case.
+        <p>Converts a string to lower case.</p>
     </div>
     
 
@@ -3308,6 +3495,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_toLower.js.html">string/toLower.js</a>,
+				 <a href="string_toLower.js.html#sunlight-1-line-9">line 9</a>
+			</li>
+		</ul>
+	</dd>
 	
 
 	
@@ -3365,7 +3562,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Converts a string to upper case.
+        <p>Converts a string to upper case.</p>
     </div>
     
 
@@ -3456,6 +3653,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_toUpper.js.html">string/toUpper.js</a>,
+				 <a href="string_toUpper.js.html#sunlight-1-line-8">line 8</a>
+			</li>
+		</ul>
+	</dd>
 	
 
 	
@@ -3493,7 +3700,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Trims whitespace at the beginning and end of a string.
+        <p>Trims whitespace at the beginning and end of a string.</p>
     </div>
     
 
@@ -3585,6 +3792,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string_trim.js.html">string/trim.js</a>,
+				 <a href="string_trim.js.html#sunlight-1-line-8">line 8</a>
+			</li>
+		</ul>
+	</dd>
+	
 
 	
 
@@ -3621,7 +3838,7 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
     
     <div class="description">
-        Creates a variadic function from a unary function that accepts a list.
+        <p>Creates a variadic function from a unary function that accepts a list.</p>
     </div>
     
 
@@ -3712,6 +3929,16 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 
 
 
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="function_unapply.js.html">function/unapply.js</a>,
+				 <a href="function_unapply.js.html#sunlight-1-line-9">line 9</a>
+			</li>
+		</ul>
+	</dd>
 	
 
 	
@@ -3804,10 +4031,14 @@ An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
 <footer>
 
 
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a>
 	
-		on 2020-08-08T00:56:00+03:00
+		on Sat Aug 8th 2020
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -3853,7 +4084,7 @@ $( function () {
 	} );
 
 	Sunlight.highlightAll( {
-		lineNumbers : false,
+		lineNumbers : true,
 		showMenu : true,
 		enableDoclinks : true
 	} );

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Index</title>
+	<title>DocStrap Source: function/ap.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,32 +60,46 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
+		<h1 class="page-title">Source: function/ap.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import reduce from "../list/reduce";
+import concat from "../list/concat";
+import map from "../list/map";
 
+/**
+ * Applies a list of functions to a list of values.
+ * If functions are provided for both arguments, returns a function that's equivalent to f(x, g(x)).
+ * Defers to the `ap` method of `applyF`, if present.
+ *
+ * @param {applicative|function|function[]} applyF
+ * @param {array|function} applyX
+ * @returns {any}
+ */
+const ap = (applyF, applyX) => {
+  if (typeof applyF.ap === "function") {
+    return applyF.ap(applyX);
+  }
 
+  if (typeof applyF === "function") {
+    return (x) => applyF(x, applyX(x));
+  }
 
+  return reduce((acc, f) => concat(acc, map(f, applyX)), [], applyF);
+};
 
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-
+export default curry(ap);
+</pre>
+    </article>
+</section>
 
 
 
@@ -96,10 +110,6 @@
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

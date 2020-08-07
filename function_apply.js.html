@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Index</title>
+	<title>DocStrap Source: function/apply.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,32 +60,34 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
+		<h1 class="page-title">Source: function/apply.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">import curry from "./curry";
 
+/**
+ * Applies a list of arguments to a function.
+ * The `this` variable will be set to undefined for that function execution.
+ *
+ * @param {function} func
+ * @param {array} args
+ * @returns {any}
+ */
+const apply = (func, args) => {
+  return func.apply(void 0, args);
+};
 
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-
+export default curry(apply);
+</pre>
+    </article>
+</section>
 
 
 
@@ -96,10 +98,6 @@
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

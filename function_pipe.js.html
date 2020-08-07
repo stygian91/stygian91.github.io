@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Index</title>
+	<title>DocStrap Source: function/pipe.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,32 +60,43 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
+		<h1 class="page-title">Source: function/pipe.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * Takes a variable list of functions and returns a new function
+ * that is a composition of all the functions that were passed.
+ * The functions are called left-to-right.
+ * The left-most function may have any arity, while the rest must be unary.
+ * An example with three functions (f, g, h) => (...args) => f(g(h(...args)))
+ *
+ * @param  {...function} funcs
+ * @returns {function}
+ */
+const pipe = (...funcs) => (...args) => {
+  if (funcs.length === 0) {
+    throw new Error("No functions provided.");
+  }
 
+  const result = funcs.reduce(
+    (prevResult, currentFn) => [currentFn(...prevResult)],
+    args
+  );
 
+  return result[0];
+};
 
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-
+export default pipe;
+</pre>
+    </article>
+</section>
 
 
 
@@ -96,10 +107,6 @@
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

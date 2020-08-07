@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Index</title>
+	<title>DocStrap Source: function/nthArg.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,32 +60,40 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
+		<h1 class="page-title">Source: function/nthArg.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">import curry from "./curry";
 
+/**
+ * Takes an index and returns a function
+ * that will return the argument with that index.
+ * If the index is negative, then the argument will
+ * be returned from the end of the argument list,
+ * where -1 is the last argument.
+ *
+ * @param {number} index
+ * @returns {function}
+ */
+const nthArg = (index) => (...args) => {
+  if (index >= 0) {
+    return args[index];
+  }
 
+  return args[args.length + index];
+};
 
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-
+export default curry(nthArg);
+</pre>
+    </article>
+</section>
 
 
 
@@ -96,10 +104,6 @@
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

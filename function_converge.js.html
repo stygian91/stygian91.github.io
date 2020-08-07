@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Index</title>
+	<title>DocStrap Source: function/converge.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,32 +60,41 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
+		<h1 class="page-title">Source: function/converge.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">import map from "../list/map";
+import curry from "./curry";
 
+/**
+ * Takes a list of functions and a converging function.
+ * Returns a new function that takes a variable number of arguments,
+ * which will be applied to each of the branching functions.
+ * The results of the branching functions will be passed to the converging function.
+ *
+ * @param {function} convergingFn
+ * @param {function[]} branchingFns
+ * @returns {function}
+ */
+const converge = (convergingFn, branchingFns) => (...args) => {
+  const branchResults = map(
+    (branchingFn) => branchingFn(...args),
+    branchingFns
+  );
+  return convergingFn(...branchResults);
+};
 
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-
+export default curry(converge);
+</pre>
+    </article>
+</section>
 
 
 
@@ -96,10 +105,6 @@
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
