@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/reverse.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,29 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/reverse.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import { curry } from "../function";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns a new list or string (depending on the argument)
+ * with its order reversed.
  *
- * @param {function} func
- * @returns {function}
+ * @param {any[]|string} listOrStr
+ * @returns {any[]|string}
  */
-const unapply = (func) => (...args) => func(args);
+const reverse = (listOrStr) => {
+  if (Array.isArray(listOrStr)) {
+    return listOrStr.slice().reverse();
+  }
 
-export default curry(unapply);
+  return listOrStr.split("").reverse().join("");
+};
+
+export default curry(reverse);
 </pre>
     </article>
 </section>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/intersection.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,29 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/intersection.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import filter from "./filter";
+import equals from "../logic/equals";
+import findIndex from "./findIndex";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Finds the intersection of two lists.
+ * Uses the `equals` function for comparison.
  *
- * @param {function} func
- * @returns {function}
+ * @see equals
+ * @param {any[]} list1
+ * @param {any[]} list2
+ * @returns {any[]}
  */
-const unapply = (func) => (...args) => func(args);
+const intersection = (list1, list2) =>
+  filter((el) => findIndex(equals(el), list2) !== -1, list1);
 
-export default curry(unapply);
+export default curry(intersection);
 </pre>
     </article>
 </section>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/concat.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,32 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/concat.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Concatenates 2 strings or 2 arrays.
  *
- * @param {function} func
- * @returns {function}
+ * @param {string|array} left
+ * @param {string|array} right
+ * @returns {string|array}
  */
-const unapply = (func) => (...args) => func(args);
+const concat = (left, right) => {
+  if (
+    !(Array.isArray(left) &amp;&amp; Array.isArray(right)) &amp;&amp;
+    !(typeof left === "string" &amp;&amp; typeof right === "string")
+  ) {
+    throw new Error("Arguments must be either both arrays or both strings.");
+  }
 
-export default curry(unapply);
+  return left.concat(right);
+};
+
+export default curry(concat);
 </pre>
     </article>
 </section>

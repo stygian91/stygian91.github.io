@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/unique.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,43 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/unique.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import findIndex from "./findIndex";
+import equals from "../logic/equals";
+import reduce from "./reduce";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns a new list with duplicate values removed.
+ * The comparison is done with the `equals` function.
  *
- * @param {function} func
- * @returns {function}
+ * @see equals
+ * @param {any[]} list
+ * @returns {any[]}
  */
-const unapply = (func) => (...args) => func(args);
+const unique = (list) => {
+  if (list.length &lt; 2) {
+    return list.slice();
+  }
 
-export default curry(unapply);
+  return reduce(
+    (acc, element) => {
+      if (findIndex(equals(element), acc) === -1) {
+        acc.push(element);
+      }
+
+      return acc;
+    },
+    [],
+    list
+  );
+};
+
+export default curry(unique);
 </pre>
     </article>
 </section>

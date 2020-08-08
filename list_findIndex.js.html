@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/findIndex.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,33 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/findIndex.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns the index of the first element that
+ * passes the condition function or -1 if no element is found.
  *
- * @param {function} func
- * @returns {function}
+ * @param {function} condFn
+ * @param {any[]} list
+ * @returns {number}
  */
-const unapply = (func) => (...args) => func(args);
+const findIndex = (condFn, list) => {
+  for (let index = 0; index &lt; list.length; index++) {
+    const value = list[index];
+    if (condFn(value, index, list)) {
+      return index;
+    }
+  }
 
-export default curry(unapply);
+  return -1;
+};
+
+export default curry(findIndex);
 </pre>
     </article>
 </section>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/size.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,40 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/size.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import { curry } from "../function";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns the size of a list, object or string.
+ * For lists and strings, it will just return the `length` property.
+ * For objects - returns the sum of the counts of its own property names
+ * and its own property symbols.
  *
- * @param {function} func
- * @returns {function}
+ * @param {any[]|object|string} collection
+ * @returns {number}
  */
-const unapply = (func) => (...args) => func(args);
+const size = (collection) => {
+  if (Array.isArray(collection) || typeof collection === "string") {
+    return collection.length;
+  }
 
-export default curry(unapply);
+  if (typeof collection === "object") {
+    return (
+      Object.getOwnPropertyNames(collection).length +
+      Object.getOwnPropertySymbols(collection).length
+    );
+  }
+
+  throw new Error(
+    `Cannot determine the size of a variable with a type of ${typeof collection}.`
+  );
+};
+
+export default curry(size);
 </pre>
     </article>
 </section>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/groupBy.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,47 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/groupBy.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Groups the elements of a list into an object
+ * where the group of each element is determined by the grouping/key function.
+ * The resulting object has the following format:
+ * &lt;pre>
+ * {
+ *   "group1": [el, el2, el3], // elements for which `groupFn` returned `group1`
+ *   "group2": [el4, el5], // elements for which `groupFn` returned `group2`
+ *   // ...
+ * }
+ * &lt;/pre>
  *
- * @param {function} func
- * @returns {function}
+ * @param {function} groupFn
+ * @param {any[]} list
+ * @returns {object}
  */
-const unapply = (func) => (...args) => func(args);
+const groupBy = (groupFn, list) => {
+  const result = {};
 
-export default curry(unapply);
+  for (let index = 0; index &lt; list.length; index++) {
+    const element = list[index];
+    const key = groupFn(element, index);
+
+    if (!result.hasOwnProperty(key)) {
+      result[key] = [];
+    }
+
+    result[key].push(element);
+  }
+
+  return result;
+};
+
+export default curry(groupBy);
 </pre>
     </article>
 </section>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/range.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,32 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/range.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import { curry } from "../function";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns a list of numbers from the first argument(inclusive)
+ * to the second argument(exclusive).
  *
- * @param {function} func
- * @returns {function}
+ * @param {number} from
+ * @param {number} to
+ * @returns {number[]}
  */
-const unapply = (func) => (...args) => func(args);
+const range = (from, to) => {
+  const result = [];
 
-export default curry(unapply);
+  for (let i = from; i &lt; to; i++) {
+    result.push(i);
+  }
+
+  return result;
+};
+
+export default curry(range);
 </pre>
     </article>
 </section>

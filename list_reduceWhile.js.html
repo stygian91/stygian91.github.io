@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/reduceWhile.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,45 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/reduceWhile.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import _listReduceWhile from "../internals/_listReduceWhile";
+import _objectReduceWhile from "../internals/_objectReduceWhile";
+import _stringReduceWhile from "../internals/_stringReduceWhile";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Similar to `reduce`, but it will terminate early if the `condFn` returns false.
+ * The condition function receives the same arguments as the reducer.
+ * See the `reduce` function for details on the reducer arguments.
  *
- * @param {function} func
- * @returns {function}
+ * @see reduce
+ * @param {function} condFn
+ * @param {function} reducer
+ * @param {any} initialValue
+ * @param {any[]|object|string} list
+ * @returns {any}
  */
-const unapply = (func) => (...args) => func(args);
+const reduceWhile = (condFn, reducer, initialValue, list) => {
+  if (Array.isArray(list)) {
+    return _listReduceWhile(condFn, reducer, initialValue, list);
+  }
 
-export default curry(unapply);
+  if (typeof list === "object") {
+    return _objectReduceWhile(condFn, reducer, initialValue, list);
+  }
+
+  if (typeof list === "string") {
+    return _stringReduceWhile(condFn, reducer, initialValue, list);
+  }
+
+  throw new Error("Argument is not reducible.");
+};
+
+export default curry(reduceWhile);
 </pre>
     </article>
 </section>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/chunk.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,47 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/chunk.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Splits a list into a groups of smaller lists with the provided size.
+ * &lt;pre>
+ * chunk(2, [1, 2, 3, 4, 5, 6, 7]);
+ * // returns:
+ * // [[1, 2], [3, 4], [5, 6], [7]]
+ * &lt;/pre>
  *
- * @param {function} func
- * @returns {function}
+ * @param {number} size
+ * @param {any[]} list
+ * @returns {any[]}
  */
-const unapply = (func) => (...args) => func(args);
+const chunk = (size, list) => {
+  if (size &lt; 1) {
+    throw new Error("Size must be a positive integer");
+  }
 
-export default curry(unapply);
+  if (size >= list.length) {
+    return [list.slice()];
+  }
+
+  const result = [];
+  let begin = 0,
+    end = size;
+  while (begin &lt; list.length) {
+    result.push(list.slice(begin, end));
+    begin += size;
+    end += size;
+  }
+
+  return result;
+};
+
+export default curry(chunk);
 </pre>
     </article>
 </section>

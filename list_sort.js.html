@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/sort.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,26 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/sort.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns a new list that's sorted according to the predicate.
+ * Uses [Array.prototype.sort]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort}
+ * for the sorting, please refer to its documentation for the arguments that the predicate receives.
+ * Note however that the sorting is done on a shallow copy of the original list.
  *
- * @param {function} func
- * @returns {function}
+ * @param {function} predicate
+ * @param {any[]} list
+ * @returns {any[]}
  */
-const unapply = (func) => (...args) => func(args);
+const sort = (predicate, list) => list.slice().sort(predicate);
 
-export default curry(unapply);
+export default curry(sort);
 </pre>
     </article>
 </section>

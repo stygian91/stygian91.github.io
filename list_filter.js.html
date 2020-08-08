@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/filter.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,40 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/filter.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import _objectFilter from "../internals/_objectFilter";
+import _stringFilter from "../internals/_stringFilter";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Filters the elements of an array, object or string
+ * and returns a new array, object or string respectively.
  *
  * @param {function} func
- * @returns {function}
+ * @param {array|string|object} list
+ * @returns {array|string|object}
  */
-const unapply = (func) => (...args) => func(args);
+const filter = (func, list) => {
+  if (typeof list.filter === "function") {
+    return list.filter(func);
+  }
 
-export default curry(unapply);
+  if (typeof list === "object") {
+    return _objectFilter(func, list);
+  }
+
+  if (typeof list === "string") {
+    return _stringFilter(func, list);
+  }
+
+  throw new Error("Argument is not filterable.");
+};
+
+export default curry(filter);
 </pre>
     </article>
 </section>

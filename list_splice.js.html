@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/splice.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,36 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/splice.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Creates a shallow copy of the list and splices it,
+ * deleting `deleteCount` items at the specified index (can be zero),
+ * and inserting `newElements` in that place.
+ * Notice that `newElements` can also be an empty list.
+ * Unlike `Array.prototype.splice`, it receives its new elements as a list instead of
+ * [Rest parameters]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters}
  *
- * @param {function} func
- * @returns {function}
+ * Reference: [Array.prototype.splice]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice}
+ *
+ * @param {number} index
+ * @param {number} deleteCount
+ * @param {any[]} newElements
+ * @param {any[]} list
+ * @returns {any[]}
  */
-const unapply = (func) => (...args) => func(args);
+const splice = (index, deleteCount, newElements, list) => {
+  const clone = list.slice();
+  clone.splice(index, deleteCount, ...newElements);
+  return clone;
+};
 
-export default curry(unapply);
+export default curry(splice);
 </pre>
     </article>
 </section>

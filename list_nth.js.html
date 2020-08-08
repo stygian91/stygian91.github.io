@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/nth.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,29 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/nth.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns the nth element of a list.
  *
- * @param {function} func
- * @returns {function}
+ * @param {number} n
+ * @param {any[]} list
+ * @returns {any}
  */
-const unapply = (func) => (...args) => func(args);
+const nth = (n, list) => {
+  if (n >= 0) {
+    return list[n];
+  }
 
-export default curry(unapply);
+  return list[list.length + n];
+};
+
+export default curry(nth);
 </pre>
     </article>
 </section>

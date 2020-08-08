@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/unapply.js</title>
+	<title>DocStrap Source: list/findLast.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,22 +65,28 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/unapply.js</h1>
+		<h1 class="page-title">Source: list/findLast.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "./curry";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import findLastIndex from "./findLastIndex";
 
 /**
- * Creates a variadic function from a unary function that accepts a list.
+ * Returns the last element in the list that pases the condition function.
  *
- * @param {function} func
- * @returns {function}
+ * @see find
+ * @param {function} condFn
+ * @param {any[]} list
+ * @returns {any}
  */
-const unapply = (func) => (...args) => func(args);
+const findLast = (condFn, list) => {
+  const index = findLastIndex(condFn, list);
+  return index === -1 ? void 0 : list[index];
+};
 
-export default curry(unapply);
+export default curry(findLast);
 </pre>
     </article>
 </section>
