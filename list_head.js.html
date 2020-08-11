@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: function/compose.js</title>
+	<title>DocStrap Source: list/head.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,28 +72,23 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: function/compose.js</h1>
+		<h1 class="page-title">Source: list/head.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import pipe from "./pipe";
-import flip from "./flip";
+            class="sunlight-highlight-javascript linenums">import nth from "./nth";
 
 /**
- * Takes a variable list of functions and returns a new function
- * that is a composition of all the functions that were passed.
- * The functions are called right-to-left.
- * The right-most function may have any arity, while the rest must be unary.
- * An example with three functions (f, g, h) => (...args) => h(g(f(...args)))
+ * Returns the first element of a list or string.
  *
  * @function
- * @param  {...function} funcs
- * @returns {function}
+ * @param {any[]|string} list
+ * @returns {any|string}
  */
-const compose = flip(pipe);
+const head = nth(0);
 
-export default compose;
+export default head;
 </pre>
     </article>
 </section>
