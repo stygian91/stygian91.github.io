@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: logic/when.js</title>
+	<title>DocStrap Source: list/unionWith.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,27 +72,42 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: logic/when.js</h1>
+		<h1 class="page-title">Source: list/unionWith.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import { forEach, findIndex } from "./";
+import { curry } from "..";
 
 /**
- * Returns the result of `thenFn(arg)` only if `conditionFn(arg)` returns a truthy value,
- * otherwise returns the argument unchanged.
+ * Returns the union of two lists.
+ * Comparisson is done with the `equalsFn`,
+ * which is given two elements and must return true if they are considered equal.
  *
- * @see unless
- * @param {function} conditionFn
- * @param {function} thenFn
- * @param {any} arg
- * @returns {any}
+ * @see union
+ * @param {function} equalsFn
+ * @param {any[]} list1
+ * @param {any[]} list2
+ * @returns {any[]}
  */
-const when = (conditionFn, thenFn, arg) =>
-  conditionFn(arg) ? thenFn(arg) : arg;
+const unionWith = (equalsFn, list1, list2) => {
+  const result = [];
 
-export default curry(when);
+  const appendItems = forEach((el) => {
+    const index = findIndex((resEl) => equalsFn(resEl, el), result);
+    if (index === -1) {
+      result.push(el);
+    }
+  });
+
+  appendItems(list1);
+  appendItems(list2);
+
+  return result;
+};
+
+export default curry(unionWith);
 </pre>
     </article>
 </section>

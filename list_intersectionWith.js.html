@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: logic/when.js</title>
+	<title>DocStrap Source: list/intersectionWith.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,27 +72,31 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: logic/when.js</h1>
+		<h1 class="page-title">Source: list/intersectionWith.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import { curry } from "../";
+import filter from "./filter";
+import findIndex from "./findIndex";
 
 /**
- * Returns the result of `thenFn(arg)` only if `conditionFn(arg)` returns a truthy value,
- * otherwise returns the argument unchanged.
+ * Finds the intersection of two lists.
+ * Uniqueness is determined by the `equalsFn`,
+ * which takes an element from each list
+ * and must return true if the two elements are considered equal.
  *
- * @see unless
- * @param {function} conditionFn
- * @param {function} thenFn
- * @param {any} arg
- * @returns {any}
+ * @see intersection
+ * @param {function} equalsFn
+ * @param {any[]} list1
+ * @param {any[]} list2
+ * @returns {any[]}
  */
-const when = (conditionFn, thenFn, arg) =>
-  conditionFn(arg) ? thenFn(arg) : arg;
+const intersectionWith = (equalsFn, list1, list2) =>
+  filter((el) => findIndex((el2) => equalsFn(el, el2), list2) !== -1, list1);
 
-export default curry(when);
+export default curry(intersectionWith);
 </pre>
     </article>
 </section>

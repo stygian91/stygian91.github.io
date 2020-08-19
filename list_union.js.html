@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: logic/when.js</title>
+	<title>DocStrap Source: list/union.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,27 +72,29 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: logic/when.js</h1>
+		<h1 class="page-title">Source: list/union.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import unionWith from "./unionWith";
+import { equals } from "..";
 
 /**
- * Returns the result of `thenFn(arg)` only if `conditionFn(arg)` returns a truthy value,
- * otherwise returns the argument unchanged.
+ * Returns the union of the two lists.
+ * Uses the `equals` function to compare if two values are equal.
  *
- * @see unless
- * @param {function} conditionFn
- * @param {function} thenFn
- * @param {any} arg
- * @returns {any}
+ * @function
+ * @name union
+ * @see unionWith
+ * @see equals
+ * @param {any[]} list1
+ * @param {any[]} list2
+ * @returns {any[]}
  */
-const when = (conditionFn, thenFn, arg) =>
-  conditionFn(arg) ? thenFn(arg) : arg;
+const union = unionWith(equals);
 
-export default curry(when);
+export default union;
 </pre>
     </article>
 </section>
