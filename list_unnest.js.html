@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: object/propSatisfies.js</title>
+	<title>DocStrap Source: list/unnest.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,26 +72,25 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: object/propSatisfies.js</h1>
+		<h1 class="page-title">Source: list/unnest.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
-import propOr from "./propOr";
+            class="sunlight-highlight-javascript linenums">import _flatten from "../internals/_flatten";
 
 /**
- * Checks if the prop satisfies the condition function.
+ * Removes one level of list nesting.
  *
- * @param {function} conditionFn
- * @param {string} propName
- * @param {object} object
- * @returns {boolean}
+ * @function
+ * @name unnest
+ * @see flatten
+ * @param {any[]} list
+ * @returns {any[]}
  */
-const propSatisfies = (conditionFn, propName, object) =>
-  conditionFn(propOr(void 0, propName, object));
+const unnest = _flatten(false);
 
-export default curry(propSatisfies);
+export default unnest;
 </pre>
     </article>
 </section>

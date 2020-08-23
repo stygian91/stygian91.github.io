@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: object/propSatisfies.js</title>
+	<title>DocStrap Source: list/chain.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,26 +72,33 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: object/propSatisfies.js</h1>
+		<h1 class="page-title">Source: list/chain.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
-import propOr from "./propOr";
+            class="sunlight-highlight-javascript linenums">import map from "./map";
+import _flatten from "../internals/_flatten";
+import curry from "../function/curry";
+import { isNil } from "../logic";
 
 /**
- * Checks if the prop satisfies the condition function.
+ * Maps a function over a list and concatenates the results.
+ * Dispatches to the `chain` method of the second argument, if one exists.
  *
- * @param {function} conditionFn
- * @param {string} propName
- * @param {object} object
- * @returns {boolean}
+ * @param {function} fn
+ * @param {any[]} list
+ * @returns {any[]}
  */
-const propSatisfies = (conditionFn, propName, object) =>
-  conditionFn(propOr(void 0, propName, object));
+const chain = (fn, list) => {
+  if (!isNil(list) &amp;&amp; typeof list.chain === "function") {
+    return list.chain(fn);
+  }
 
-export default curry(propSatisfies);
+  return _flatten(false, map(fn, list));
+};
+
+export default curry(chain);
 </pre>
     </article>
 </section>
