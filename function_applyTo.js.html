@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: math/clamp.js</title>
+	<title>DocStrap Source: function/applyTo.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,34 +72,24 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: math/clamp.js</h1>
+		<h1 class="page-title">Source: function/applyTo.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import curry from "./curry";
 
 /**
- * Clamps a number to fit in a range.
+ * Takes a value and a function and applies the function to the value.
+ * With currying, this allows for the creation of a function that always supplies the same value for different operations.
  *
- * @param {number} min
- * @param {number} max
- * @param {number} value
- * @returns {number}
+ * @param {any} x
+ * @param {function} fn
+ * @returns {any}
  */
-const clamp = (min, max, value) => {
-  if (value &lt; min) {
-    return min;
-  }
+const applyTo = (x, fn) => fn(x);
 
-  if (value > max) {
-    return max;
-  }
-
-  return value;
-};
-
-export default curry(clamp);
+export default curry(applyTo);
 </pre>
     </article>
 </section>
