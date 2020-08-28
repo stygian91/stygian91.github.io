@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: list/join.js</title>
+	<title>DocStrap Source: function/descend.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,24 +72,32 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: list/join.js</h1>
+		<h1 class="page-title">Source: function/descend.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import curry from "./curry";
 
 /**
- * Joins the elements of a list into a string
- * with the "glue" string inbetween each element.
- * Defers to [Array.prototype.join]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join}
+ * Creates a descending comparator function to be used with the sort function.
+ * The `fn` argument must be a unary function that returns a value
+ * that can be compared using the `>` and `&lt;` operators,
+ * this value will be used for the comparison.
  *
- * @param {*} glue
- * @param {*} list
+ * @see sort
+ * @see ascend
+ * @param {function} fn
+ * @returns {function}
  */
-const join = (glue, list) => list.join(glue);
+const descend = (fn) => (a, b) => {
+  const a1 = fn(a);
+  const b1 = fn(b);
 
-export default curry(join);
+  return a1 &lt; b1 ? 1 : a1 > b1 ? -1 : 0;
+};
+
+export default curry(descend);
 </pre>
     </article>
 </section>
