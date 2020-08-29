@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: math/multiply.js</title>
+	<title>DocStrap Source: list/difference.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,23 +72,28 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: math/multiply.js</h1>
+		<h1 class="page-title">Source: list/difference.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import differenceWith from "./differenceWith";
+import { equals } from "../";
+import { curry } from "../function";
 
 /**
- * A curried version of the `*` operator.
+ * Returns a unique list of elements from list1 that are not present in list2.
+ * Comparison is done using the `equals` function.
  *
- * @param {number} a
- * @param {number} b
- * @returns {number}
+ * @see differenceWith
+ * @see equals
+ * @param {any[]} list1
+ * @param {any[]} list2
+ * @returns {any[]}
  */
-const multiply = (a, b) => a * b;
+const difference = differenceWith(equals);
 
-export default curry(multiply);
+export default curry(difference);
 </pre>
     </article>
 </section>

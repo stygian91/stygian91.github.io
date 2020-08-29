@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: math/multiply.js</title>
+	<title>DocStrap Source: list/differenceWith.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,23 +72,39 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: math/multiply.js</h1>
+		<h1 class="page-title">Source: list/differenceWith.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+            class="sunlight-highlight-javascript linenums">import { forEach, findIndex } from "./";
+import { curry } from "..";
 
 /**
- * A curried version of the `*` operator.
+ * Returns a unique list of elements from list1 that are not present in list2.
+ * Comparison is done using the binary function argument - `equalsFn`.
  *
- * @param {number} a
- * @param {number} b
- * @returns {number}
+ * @see difference
+ * @param {function} equalsFn
+ * @param {any[]} list1
+ * @param {any[]} list2
+ * @returns {any[]}
  */
-const multiply = (a, b) => a * b;
+const differenceWith = (equalsFn, list1, list2) => {
+  const result = [];
 
-export default curry(multiply);
+  forEach((el) => {
+    const resIndex = findIndex((resEl) => equalsFn(resEl, el), result);
+    const listIndex = findIndex((el2) => equalsFn(el2, el), list2);
+    if (resIndex === -1 &amp;&amp; listIndex === -1) {
+      result.push(el);
+    }
+  }, list1);
+
+  return result;
+};
+
+export default curry(differenceWith);
 </pre>
     </article>
 </section>
