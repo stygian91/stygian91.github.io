@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: list/prepend.js</title>
+	<title>DocStrap Source: object/keys.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,25 +72,23 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: list/prepend.js</h1>
+		<h1 class="page-title">Source: object/keys.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import { insert } from "./";
+            class="sunlight-highlight-javascript linenums">import _keys from "../internals/_keys";
+import curry from "../function/curry";
 
 /**
- * Prepends a value at the beginning of a list.
+ * Returns all own enumerable property names and symbols.
  *
  * @function
- * @name prepend
- * @param {any} value
- * @param {any[]} list
+ * @name keys
+ * @param {object} obj
  * @returns {any[]}
  */
-const prepend = insert(0);
-
-export default prepend;
+export default curry(_keys);
 </pre>
     </article>
 </section>
