@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: list/intersection.js</title>
+	<title>DocStrap Source: list/without.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,29 +72,30 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: list/intersection.js</h1>
+		<h1 class="page-title">Source: list/without.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import equals from "../logic/equals";
-import intersectionWith from "./intersectionWith";
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+import filter from "./filter";
+import equals from "../logic/equals";
+import findIndex from "./findIndex";
 
 /**
- * Finds the intersection of two lists.
- * Uses the `equals` function for comparison.
+ * Removes a list of values from the target list.
+ * Equality comparisson is made with the `equals` function.
  *
  * @function
- * @name intersection
+ * @name without
  * @see equals
- * @see intersectionWith
- * @param {any[]} list1
- * @param {any[]} list2
- * @returns {any[]}
+ * @param {any[]} values
+ * @param {any[]} list
  */
-const intersection = intersectionWith(equals);
+const without = (values, list) =>
+  filter((val) => findIndex(equals(val), values) === -1, list);
 
-export default intersection;
+export default curry(without);
 </pre>
     </article>
 </section>
