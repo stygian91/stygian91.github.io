@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: list/chunk.js</title>
+	<title>DocStrap Source: math/inRange.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +72,7 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: list/chunk.js</h1>
+		<h1 class="page-title">Source: math/inRange.js</h1>
     
 <section>
     <article>
@@ -80,39 +80,17 @@
             class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
 
 /**
- * Splits a list into a groups of smaller lists with the provided size.
- * &lt;pre>
- * chunk(2, [1, 2, 3, 4, 5, 6, 7]);
- * // returns:
- * // [[1, 2], [3, 4], [5, 6], [7]]
- * &lt;/pre>
+ * Checks if a number is within range.
+ * The lower boundary is inclusive and upper boundary is exclusive.
  *
- * @param {number} size
- * @param {any[]} list
- * @returns {any[]}
+ * @param {number} min
+ * @param {number} max
+ * @param {number} value
+ * @returns {boolean}
  */
-const chunk = (size, list) => {
-  if (size &lt; 1) {
-    throw new Error("Size must be a positive integer");
-  }
+const inRange = (min, max, value) => min &lt;= value &amp;&amp; max > value;
 
-  if (size >= list.length) {
-    return [list.slice()];
-  }
-
-  const result = [];
-  let begin = 0,
-    end = size;
-  while (begin &lt; list.length) {
-    result.push(list.slice(begin, end));
-    begin += size;
-    end += size;
-  }
-
-  return result;
-};
-
-export default curry(chunk);
+export default curry(inRange);
 </pre>
     </article>
 </section>
