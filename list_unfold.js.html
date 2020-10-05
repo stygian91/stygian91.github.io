@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Class: Left</title>
+	<title>DocStrap Source: list/unfold.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,136 +67,45 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Left</h1>
+		<h1 class="page-title">Source: list/unfold.js</h1>
+    
 <section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
+/**
+ * Generates a list based on a seed and an iterator function.
+ * The iterator function accepts a single argument - a seed.
+ * The iterator needs to return either `false` to stop the generation or an array of 2 elements.
+ * The first element in the array is the value that's going to be appended to the result,
+ * while the second element is the seed for the next iteration.
+ *
+ * @param {function} fn
+ * @param {any} seed
+ * @returns {any[]}
+ */
+const unfold = (fn, seed) => {
+  let tuple = fn(seed);
+  const result = [];
 
-<header>
-    
-        <h2>
-        Left
-        </h2>
-        
-            <div class="class-description"><p>Left value of the Either monad.<br>
-Has noop implementations.</p></div>
-        
-    
-</header>
+  while (tuple &amp;&amp; Array.isArray(tuple)) {
+    result.push(tuple[0]);
+    tuple = fn(tuple[1]);
+  }
 
+  return result;
+};
 
-<article>
-    <div class="container-overview">
-    
-        
-<hr>
-<dt>
-    <h4 class="name" id="Left"><span class="type-signature"></span>new Left()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="data-structures_either.js.html">data-structures/either.js</a>,
-				 <a href="data-structures_either.js.html#sunlight-1-line-19">line 19</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
+export default curry(unfold);
+</pre>
+    </article>
 </section>
+
 
 
 
@@ -206,10 +115,6 @@ Has noop implementations.</p></div>
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
