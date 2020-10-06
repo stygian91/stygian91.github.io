@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: list/filter.js</title>
+	<title>DocStrap Source: math/inc.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,41 +72,22 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: list/filter.js</h1>
+		<h1 class="page-title">Source: math/inc.js</h1>
     
 <section>
     <article>
         <pre
             class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
-import path from "../object/path";
-import _objectFilter from "../internals/_objectFilter";
-import _stringFilter from "../internals/_stringFilter";
 
 /**
- * Filters the elements of an array, object or string
- * and returns a new array, object or string respectively.
+ * Increments a number.
  *
- * @param {function} func
- * @param {array|string|object} list
- * @returns {array|string|object}
+ * @param {number} number
+ * @returns {number}
  */
-const filter = (func, list) => {
-  if (typeof path("filter", list) === "function") {
-    return list.filter(func);
-  }
+const inc = (num) => num + 1;
 
-  if (typeof list === "object") {
-    return _objectFilter(func, list);
-  }
-
-  if (typeof list === "string") {
-    return _stringFilter(func, list);
-  }
-
-  throw new Error("Argument is not filterable.");
-};
-
-export default curry(filter);
+export default curry(inc);
 </pre>
     </article>
 </section>
