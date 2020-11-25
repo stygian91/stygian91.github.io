@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: list/flatten.js</title>
+	<title>DocStrap Source: function/construct.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,25 +72,87 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: list/flatten.js</h1>
+		<h1 class="page-title">Source: function/construct.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import _flatten from "../internals/_flatten";
+            class="sunlight-highlight-javascript linenums">import arity from "./arity";
+import curry from "./curry";
+
+// jshint maxcomplexity: false
 
 /**
- * Returns a new list with all nested arrays flattened.
+ * Creates a curried version of a constructor function.
+ * The resulting function does not need the use of the `new` keyword.
+ * The constructor function can only take up to 10 arguments.
  *
  * @function
- * @name flatten
- * @see unnest
- * @param {any[]} list
- * @returns {any[]}
+ * @param {function} classFn
+ * @returns {function}
  */
-const flatten = _flatten(true);
+const construct = curry((classFn) => constructN(classFn.length, classFn));
 
-export default flatten;
+/**
+ * Creates a curried constructor, like `construct`,
+ * but also takes the constructor's arity as its first argument.
+ *
+ * @see construct
+ * @function
+ * @param {number} n
+ * @param {function} classFn
+ * @returns {function}
+ */
+export const constructN = curry((n, classFn) => {
+  if (n &lt; 0 || n > 10) {
+    throw new Error("The n argument must be from 0 to 10, inclusive.");
+  }
+
+  if (n === 0) {
+    return function () {
+      return new classFn();
+    };
+  }
+
+  return curry(
+    arity(n, function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+      switch (n) {
+        case 1:
+          return new classFn(a0);
+
+        case 2:
+          return new classFn(a0, a1);
+
+        case 3:
+          return new classFn(a0, a1, a2);
+
+        case 4:
+          return new classFn(a0, a1, a2, a3);
+
+        case 5:
+          return new classFn(a0, a1, a2, a3, a4);
+
+        case 6:
+          return new classFn(a0, a1, a2, a3, a4, a5);
+
+        case 7:
+          return new classFn(a0, a1, a2, a3, a4, a5, a6);
+
+        case 8:
+          return new classFn(a0, a1, a2, a3, a4, a5, a6, a7);
+
+        case 9:
+          return new classFn(a0, a1, a2, a3, a4, a5, a6, a7, a8);
+
+        case 10:
+        default:
+          return new classFn(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9);
+      }
+    })
+  );
+});
+
+export default construct;
 </pre>
     </article>
 </section>
