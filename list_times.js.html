@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: object/path.js</title>
+	<title>DocStrap Source: list/times.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,25 +72,33 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: object/path.js</h1>
+		<h1 class="page-title">Source: list/times.js</h1>
     
 <section>
     <article>
         <pre
             class="sunlight-highlight-javascript linenums">import curry from "../function/curry";
-import pathOr from "./pathOr";
 
 /**
- * Returns the element at the specified path.
- * The path can be provided as a dot-separated string or as a list of strings.
+ * Executes `fn` n times and returns its results as a list.
+ * The predicate is passed the current iteration number as its only argument,
+ * which ranges from 0 to n - 1.
  *
- * @param {string|string[]} path
- * @param {object} object
- * @returns {any}
+ * @param {function} fn
+ * @param {integer} n
+ * @returns {any[]}
  */
-const path = (pathStr, object) => pathOr(void 0, pathStr, object);
+const times = (fn, n) => {
+  const results = [];
 
-export default curry(path);
+  for (let i = 0; i &lt; n; i++) {
+    results.push(fn(i));
+  }
+
+  return results;
+};
+
+export default curry(times);
 </pre>
     </article>
 </section>
