@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Source: string/split.js</title>
+	<title>DocStrap Source: function/curry2.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,23 +72,47 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: string/split.js</h1>
+		<h1 class="page-title">Source: function/curry2.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">import curry2 from "../function/curry2";
+            class="sunlight-highlight-javascript linenums">import __ from "./placeholderArgument";
+import curry1 from "./curry1";
 
 /**
- * Splits a string into a list of strings based on a delimiter.
+ * A simplified curry for binary functions.
  *
- * @param {string} delimiter
- * @param {string} string
- * @returns {string[]}
+ * @param {function} fn
+ * @return {function}
  */
-const split = (delimiter, string) => string.split(delimiter);
+const curry2 = (fn) =>
+  function fn2(a, b) {
+    switch (arguments.length) {
+      case 0:
+        return fn2;
 
-export default curry2(split);
+      case 1:
+        return a === __ ? fn2 : curry1((b1) => fn(a, b1));
+
+      default:
+        if (a === __ &amp;&amp; b === __) {
+          return fn2;
+        }
+
+        if (a === __) {
+          return curry1((a1) => fn(a1, b));
+        }
+
+        if (b === __) {
+          return curry1((b1) => fn(a, b1));
+        }
+
+        return fn(a, b);
+    }
+  };
+
+export default curry2;
 </pre>
     </article>
 </section>
